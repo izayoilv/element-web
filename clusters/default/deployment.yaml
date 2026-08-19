@@ -63,6 +63,8 @@ spec:
               readOnly: true
             - name: tmp
               mountPath: /tmp
+            - name: nginx-conf
+              mountPath: /etc/nginx/conf.d
             - name: nginx-cache
               mountPath: /var/cache/nginx
             - name: nginx-run
@@ -74,6 +76,8 @@ spec:
           configMap:
             name: element-config
         - name: tmp
+          emptyDir: {}
+        - name: nginx-conf
           emptyDir: {}
         - name: nginx-cache
           emptyDir: {}
