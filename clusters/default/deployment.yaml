@@ -61,6 +61,8 @@ spec:
               mountPath: /app/config.json
               subPath: config.json
               readOnly: true
+            - name: tmp
+              mountPath: /tmp
             - name: nginx-cache
               mountPath: /var/cache/nginx
             - name: nginx-run
@@ -71,6 +73,8 @@ spec:
         - name: config
           configMap:
             name: element-config
+        - name: tmp
+          emptyDir: {}
         - name: nginx-cache
           emptyDir: {}
         - name: nginx-run
