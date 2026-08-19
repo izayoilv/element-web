@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: element-ingress
+  namespace: element-web
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: |
+      kube-system-infra-security-headers@kubernetescrd
+  labels:
+    app.kubernetes.io/name: element-web
+    app.kubernetes.io/part-of: kudofools
+    app.kubernetes.io/managed-by: flux
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: element.kudofools.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: element
+                port:
+                  number: 80
