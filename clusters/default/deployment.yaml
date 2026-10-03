@@ -26,7 +26,7 @@ spec:
       enableServiceLinks: false
       containers:
         - name: element
-          image: vectorim/element-web:v1.12.26
+          image: vectorim/element-web:v1.12.30
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
