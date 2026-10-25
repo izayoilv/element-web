@@ -37,18 +37,29 @@ spec:
           ports:
             - containerPort: 80
               name: http
+          startupProbe:
+            httpGet:
+              path: /config.json
+              port: 80
+            periodSeconds: 5
+            timeoutSeconds: 10
+            failureThreshold: 24
           readinessProbe:
             httpGet:
               path: /config.json
               port: 80
             initialDelaySeconds: 5
             periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 3
           livenessProbe:
             httpGet:
               path: /config.json
               port: 80
             initialDelaySeconds: 15
-            periodSeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 10
+            failureThreshold: 5
           resources:
             limits:
               cpu: "1"
